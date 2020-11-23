@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RaceService} from '../race.service';
 import {RaceModel} from '../models/race.model';
 
@@ -7,6 +7,7 @@ import {RaceModel} from '../models/race.model';
   templateUrl: './races.component.html',
   styleUrls: ['./races.component.css']
 })
+
 export class RacesComponent implements OnInit {
 
   raceList: Array<RaceModel> | undefined;
