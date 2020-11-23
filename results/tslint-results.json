@@ -1,1 +1,1 @@
-[]
+[{"endPosition":{"character":17,"line":9,"position":238},"failure":"Array type using 'T[]' is forbidden. Use 'Array<T>' instead.","fix":[{"innerStart":233,"innerLength":0,"innerText":"Array<"},{"innerStart":236,"innerLength":2,"innerText":">"}],"name":"C:/Users/alabiadh/WebstormProjects/ponyracer/src/app/races/races.component.ts","ruleName":"array-type","ruleSeverity":"error","startPosition":{"character":12,"line":9,"position":233}}]
