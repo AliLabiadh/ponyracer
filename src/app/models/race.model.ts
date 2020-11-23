@@ -1,3 +1,3 @@
-export interface Race {
+export interface RaceModel {
   name: string;
 }

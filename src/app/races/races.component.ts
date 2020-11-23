@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {RaceService} from '../race.service';
+import {RaceModel} from '../models/race.model';
 
 @Component({
   selector: 'pr-races',
@@ -7,11 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RacesComponent implements OnInit {
 
-  raceList: any[] | undefined;
-  constructor() { }
+  raceList: Array<RaceModel> | undefined;
+  constructor(private raceService: RaceService) { }
 
   ngOnInit(): void {
-   this.raceList = [{ name: 'Lyon' }, { name: 'London' }, { name: 'Paris' }];
+   this.raceList = this.raceService.list();
   }
 
 }
