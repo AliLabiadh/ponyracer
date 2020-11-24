@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {RaceModel} from './models/race.model';
+import {tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +39,7 @@ export class RaceService {
   ]);
 
   get(): Observable<Array<RaceModel>> {
-    return this.http.get<Array<RaceModel>>(this.apiUrl);
+    return this.http.get<Array<RaceModel>>(this.apiUrl).pipe(tap(l => console.log([l])));
   }
 
 }
