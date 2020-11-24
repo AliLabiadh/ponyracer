@@ -8,7 +8,6 @@ export class FromNowPipe implements PipeTransform {
 
   transform(value: string, ...args: Array<unknown>): string {
     const date = parseISO(value);
-    console.log('value', value, 'date', date);
     return formatDistanceToNowStrict(date, { addSuffix: true });
   }
 
