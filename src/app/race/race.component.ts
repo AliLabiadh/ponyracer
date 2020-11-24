@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {RaceModel} from '../models/race.model';
 
 @Component({
   selector: 'pr-race',
@@ -7,7 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class RaceComponent implements OnInit {
 
-  @Input() raceModel: string | undefined;
+  @Input() raceModel?: RaceModel = {name: '', ponies: [{id: 0, name: '', color: ''}]};
 
   constructor() { }
 

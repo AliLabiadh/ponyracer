@@ -16,11 +16,7 @@ export class MenuComponent implements OnInit {
   }
 
   toggleNavbar(): void{
-    if (this.navbarCollapsed === true){
-      this.navbarCollapsed = false;
-    }else {
-      this.navbarCollapsed = true;
-    }
+    this.navbarCollapsed = !this.navbarCollapsed;
   }
 
 }

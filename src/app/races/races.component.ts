@@ -10,7 +10,7 @@ import {RaceModel} from '../models/race.model';
 
 export class RacesComponent implements OnInit {
 
-  raceList: Array<RaceModel> | undefined;
+  raceList: Array<RaceModel> = [];
   constructor(private raceService: RaceService) { }
 
   ngOnInit(): void {
