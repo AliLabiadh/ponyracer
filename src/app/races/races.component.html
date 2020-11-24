@@ -1,9 +1,8 @@
 <tbody>
-  <tr *ngFor="let race of raceList  | slice:0:4">
+  <tr *ngFor="let race of apiList  | slice:0:4">
     <div>
     <h2>
       <pr-race [raceModel]="race"></pr-race>
     </h2>
     </div>
 </tbody>
-

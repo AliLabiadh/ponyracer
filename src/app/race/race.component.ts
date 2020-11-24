@@ -8,7 +8,8 @@ import {RaceModel} from '../models/race.model';
 })
 export class RaceComponent implements OnInit {
 
-  @Input() raceModel?: RaceModel = {name: '', ponies: [{id: 0, name: '', color: ''}]};
+  @Input() raceModel?: RaceModel = {id: 0, name: '', ponies: [{id: 0, name: '', color: ''}], startInstant: ''};
+
 
   constructor() { }
 

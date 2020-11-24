@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import {Observable, of} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {RaceModel} from './models/race.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RaceService {
-  constructor() { }
+  constructor(private http: HttpClient) { }
+  private readonly apiUrl = 'https://ponyracer.ninja-squad.com/api/races?status=PENDING';
+
 
   list = of([
     {
@@ -32,4 +36,9 @@ export class RaceService {
       startInstant: '2020-02-18T08:03:00Z'
     }
   ]);
+
+  get(): Observable<Array<RaceModel>> {
+    return this.http.get<Array<RaceModel>>(this.apiUrl);
+  }
+
 }
