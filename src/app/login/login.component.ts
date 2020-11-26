@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
   authenticate(): void {
     this.userService.authenticate(this.credentials).subscribe(
         data => {
-          console.log('data', data);
           this.router.navigate(['/']);
         }, error => {
         this.authenticationFailed  = true;
