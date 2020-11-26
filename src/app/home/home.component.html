@@ -3,7 +3,11 @@
 </div>
 
 <div class="text-center">
-  <a class="btn btn-primary" routerLink="/races">Races</a>
-  <a class="btn btn-primary" routerLink="/login">Login</a>
-  <a class="btn btn-primary" routerLink="/register">Register</a>
+    <div *ngIf="user">
+      <a class="btn btn-primary" routerLink="/races">Races</a>
+    </div>
+    <div *ngIf="!user">
+      <a class="btn btn-primary" routerLink="/login">Login</a>
+      <a class="btn btn-primary" routerLink="/register">Register</a>
+    </div>
 </div>

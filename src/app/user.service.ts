@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable, Subject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {UserModel} from './models/user.model';
 import {tap} from 'rxjs/operators';
 
@@ -9,7 +9,7 @@ import {tap} from 'rxjs/operators';
 })
 export class UserService {
   private postUserApi = 'https://ponyracer.ninja-squad.com/api/users';
-  userEvents = new Subject<UserModel>();
+  userEvents = new BehaviorSubject <UserModel>(undefined);
 
   constructor(private http: HttpClient) { }
 
