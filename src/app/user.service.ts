@@ -26,9 +26,22 @@ export class UserService {
       credentials
     ).pipe(
       tap(
-        (user: UserModel) => this.userEvents.next(user)));
+        (user: UserModel) => this.storeLoggedInUser(user)));
   }
 
+  storeLoggedInUser(user: UserModel): void{
+    window.localStorage.setItem('rememberMe', JSON.stringify(user));
+    this.userEvents.next(user);
+  }
+
+  retrieveUser(): void {
+   const value = window.localStorage.getItem('rememberMe');
+   if (value){
+    const user = JSON.parse(value);
+    this.userEvents.next(user);
+   }
+  }
 }
+
 
 
