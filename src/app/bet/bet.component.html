@@ -1,5 +1,6 @@
 <div *ngIf="raceModel">
   <h1>{{ raceModel.name }}</h1>
+  <a class="btn btn-primary" [routerLink]="['/races', raceModel.id, 'live']">Watch live!</a>
   <div>
     <p *ngIf="raceModel.startInstant">{{raceModel.startInstant | fromNow}}</p>
     <div *ngFor="let pony of raceModel.ponies" class="col-12 col-md-2" [ngClass]="{selected: isPonySelected(pony)}">

@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
@@ -17,7 +18,7 @@ export class UserService {
               private jwtInterceptor: JwtInterceptor) { }
 
   register(login: string, password: string, birthYear: number): Observable<UserModel> {
-     return this.http.post<UserModel>(`${this.postUserApi}/api/users`, {
+    return this.http.post<UserModel>(`${this.postUserApi}/api/users`, {
       login,
       password,
       birthYear
@@ -39,12 +40,12 @@ export class UserService {
   }
 
   retrieveUser(): void {
-   const value = window.localStorage.getItem('rememberMe');
-   if (value){
-    const user = JSON.parse(value);
-    this.jwtInterceptor.setJwtToken(user.token);
-    this.userEvents.next(user);
-   }
+    const value = window.localStorage.getItem('rememberMe');
+    if (value){
+      const user = JSON.parse(value);
+      this.jwtInterceptor.setJwtToken(user.token);
+      this.userEvents.next(user);
+    }
   }
 
   logout(): void {
@@ -53,6 +54,3 @@ export class UserService {
     this.userEvents.next(null);
   }
 }
-
-
-
