@@ -6,7 +6,7 @@ import { MenuComponent } from './menu/menu.component';
 import { RacesComponent } from './races/races.component';
 import { RaceComponent } from './race/race.component';
 import { PonyComponent } from './pony/pony.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { FromNowPipe } from './from-now.pipe';
 import {RouterModule} from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -14,10 +14,20 @@ import {AppRoutesModule} from './app.routes';
 import { RegisterComponent } from './register/register.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { JwtInterceptor } from './jwt.interceptor';
 
 @NgModule({
-  declarations: [AppComponent, MenuComponent, RacesComponent, RaceComponent, PonyComponent,
-    FromNowPipe, HomeComponent, RegisterComponent, LoginComponent],
+  declarations: [
+    AppComponent,
+    MenuComponent,
+    RacesComponent,
+    RaceComponent,
+    PonyComponent,
+    FromNowPipe,
+    HomeComponent,
+    RegisterComponent,
+    LoginComponent]
+  ,
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -26,7 +36,13 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useExisting: JwtInterceptor,
+    multi: true
+  }],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule {}

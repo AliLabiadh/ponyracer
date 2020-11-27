@@ -2,19 +2,22 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {UserModel} from './models/user.model';
+import {environment} from '../environments/environment';
 import {tap} from 'rxjs/operators';
+import {JwtInterceptor} from './jwt.interceptor';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private postUserApi = 'https://ponyracer.ninja-squad.com/api/users';
+  private postUserApi = environment.baseUrl;
   userEvents = new BehaviorSubject <UserModel>(undefined);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private jwtInterceptor: JwtInterceptor) { }
 
   register(login: string, password: string, birthYear: number): Observable<UserModel> {
-     return this.http.post<UserModel>(this.postUserApi, {
+     return this.http.post<UserModel>(`${this.postUserApi}/api/users`, {
       login,
       password,
       birthYear
@@ -22,7 +25,7 @@ export class UserService {
   }
 
   authenticate(credentials: {login: string; password: string}): Observable<UserModel> {
-    return this.http.post<UserModel>(`${this.postUserApi}/authentication`,
+    return this.http.post<UserModel>(`${this.postUserApi}/api/users/authentication`,
       credentials
     ).pipe(
       tap(
@@ -30,6 +33,7 @@ export class UserService {
   }
 
   storeLoggedInUser(user: UserModel): void{
+    this.jwtInterceptor.setJwtToken(user.token);
     window.localStorage.setItem('rememberMe', JSON.stringify(user));
     this.userEvents.next(user);
   }
@@ -38,13 +42,15 @@ export class UserService {
    const value = window.localStorage.getItem('rememberMe');
    if (value){
     const user = JSON.parse(value);
+    this.jwtInterceptor.setJwtToken(user.token);
     this.userEvents.next(user);
    }
   }
 
   logout(): void {
-    this.userEvents.next(null);
+    this.jwtInterceptor.removeJwtToken();
     window.localStorage.removeItem('rememberMe');
+    this.userEvents.next(null);
   }
 }
 
