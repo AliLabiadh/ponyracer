@@ -8,13 +8,14 @@ import { RaceComponent } from './race/race.component';
 import { PonyComponent } from './pony/pony.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { FromNowPipe } from './from-now.pipe';
-import {RouterModule} from '@angular/router';
+import { RouterModule} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import {AppRoutesModule} from './app.routes';
 import { RegisterComponent } from './register/register.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { JwtInterceptor } from './jwt.interceptor';
+import { BetComponent } from './bet/bet.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { JwtInterceptor } from './jwt.interceptor';
     FromNowPipe,
     HomeComponent,
     RegisterComponent,
-    LoginComponent]
+    LoginComponent,
+    BetComponent]
   ,
   imports: [
     BrowserModule,

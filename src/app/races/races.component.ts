@@ -10,15 +10,13 @@ import {RaceModel} from '../models/race.model';
 
 export class RacesComponent implements OnInit {
 
-  raceList: Array<RaceModel> = [];
-  apiList: Array<RaceModel> = [];
+  races: Array<RaceModel> = [];
   constructor(private raceService: RaceService) { }
 
   ngOnInit(): void {
-   this.raceService.list.subscribe(races => this.raceList = races);
-   this.raceService.get().subscribe(
+   this.raceService.list().subscribe(
       raceList => {
-        this.apiList = raceList;
+        this.races = raceList;
       }
     );
   }

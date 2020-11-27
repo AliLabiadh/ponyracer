@@ -4,10 +4,16 @@ import {NgModule} from '@angular/core';
 import {HomeComponent} from './home/home.component';
 import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
+import {BetComponent} from './bet/bet.component';
 
 const ROUTES: Routes = [
   { path: '', component: HomeComponent},
-  { path: 'races', component: RacesComponent},
+  { path: 'races',
+    children: [
+      {path: '', component: RacesComponent},
+      {path: ':raceId', component: BetComponent}
+    ]
+  },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent}
 ];

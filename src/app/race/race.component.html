@@ -2,7 +2,7 @@
   <h2>{{ raceModel.name }}</h2>
   <div>
     <p *ngIf="raceModel.startInstant">{{raceModel.startInstant | fromNow}}</p>
-    <div *ngFor="let pony of raceModel.ponies">
+    <div *ngFor="let pony of raceModel.ponies" class="col-12 col-md-2">
       <pr-pony [ponyModel]="pony"></pr-pony>
     </div>
   </div>

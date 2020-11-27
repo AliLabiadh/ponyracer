@@ -8,7 +8,7 @@ import {PonyModel} from '../models/pony.model';
 })
 export class PonyComponent implements OnInit {
 
-  @Input() ponyModel?: PonyModel = {id: 0, name: '', color: ''};
+  @Input() ponyModel: PonyModel;
   @Output() readonly ponyClicked = new EventEmitter<PonyModel>();
   constructor() { }
 
