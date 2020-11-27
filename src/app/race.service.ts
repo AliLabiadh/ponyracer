@@ -24,4 +24,8 @@ export class RaceService {
     return  this.http.get<RaceModel>(`${this.apiUrl}/api/races/${id}`);
   }
 
+  cancelBet(raceId: number): Observable<RaceModel>{
+    return this.http.delete<RaceModel>(`${this.apiUrl}/api/races/${raceId}/bets`);
+  }
+
 }
