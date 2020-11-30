@@ -12,22 +12,21 @@ import {WsService} from './ws.service';
 })
 export class RaceService {
   constructor(private http: HttpClient, private wsService: WsService) { }
-  private readonly apiUrl = environment.baseUrl;
 
   list(): Observable<Array<RaceModel>> {
-    return this.http.get<Array<RaceModel>>(`${this.apiUrl}/api/races?status=PENDING`).pipe(tap(l => console.log([l])));
+    return this.http.get<Array<RaceModel>>(`${environment.baseUrl}/api/races?status=PENDING`).pipe(tap(l => console.log([l])));
   }
 
   bet(raceId: number, ponyId: number): Observable<RaceModel>{
-    return this.http.post<RaceModel>(`${this.apiUrl}/api/races/${raceId}/bets`, {ponyId});
+    return this.http.post<RaceModel>(`${environment.baseUrl}/api/races/${raceId}/bets`, {ponyId});
   }
 
   get(id: number): Observable<RaceModel>{
-    return  this.http.get<RaceModel>(`${this.apiUrl}/api/races/${id}`);
+    return  this.http.get<RaceModel>(`${environment.baseUrl}/api/races/${id}`);
   }
 
   cancelBet(raceId: number): Observable<RaceModel>{
-    return this.http.delete<RaceModel>(`${this.apiUrl}/api/races/${raceId}/bets`);
+    return this.http.delete<RaceModel>(`${environment.baseUrl}/api/races/${raceId}/bets`);
   }
 
   live(raceId: number): Observable<Array<PonyWithPositionModel>> {
@@ -36,5 +35,8 @@ export class RaceService {
       map(liveRace => liveRace.ponies));
   }
 
+  boost(raceId: number, ponyId: number): Observable<void> {
+    return this.http.post<void>(`${environment.baseUrl}/api/races/${raceId}/boosts`, { ponyId });
+  }
 
 }
