@@ -63,4 +63,9 @@ register(login: string, password: string, birthYear: number): Observable<UserMod
     return this.wsService.connect<UserModel>(`/player/${userId}`);
   }
 
+  isLoggedIn(): boolean {
+    return !!window.localStorage.getItem('rememberMe');
+  }
+
+
 }
