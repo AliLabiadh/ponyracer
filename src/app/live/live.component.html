@@ -1,7 +1,7 @@
 <div>
-  <h1>{{ raceModel?.name }}</h1>
+  <h1>{{ raceModel.name }}</h1>
   <div class="alert alert-danger" *ngIf="error">A problem occurred during the live.</div>
-  <div id="live-race" [ngSwitch]="raceModel?.status">
+  <div id="live-race" [ngSwitch]="raceModel.status">
     <div *ngSwitchCase="'FINISHED'">
       <div *ngIf="!winners.length; else displayWinners">The race is over.</div>
       <ng-template #displayWinners>
