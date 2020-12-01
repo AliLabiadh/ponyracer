@@ -5,6 +5,7 @@ import {LoginComponent} from '../login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {USERS_ROUTES} from './users.routes';
+import {SharedModule} from '../shared/shared.module';
 
 
 
@@ -16,7 +17,8 @@ import {USERS_ROUTES} from './users.routes';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule.forChild(USERS_ROUTES)
+    RouterModule.forChild(USERS_ROUTES),
+    SharedModule
   ]
 })
 export class UsersModule { }

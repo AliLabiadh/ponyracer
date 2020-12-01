@@ -13,7 +13,8 @@ import { JwtInterceptor } from './jwt.interceptor';
   declarations: [
     AppComponent,
     MenuComponent,
-    HomeComponent]
+    HomeComponent
+    ]
   ,
   imports: [
     BrowserModule,
