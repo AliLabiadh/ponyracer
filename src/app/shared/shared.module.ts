@@ -5,10 +5,11 @@ import { AlertComponent } from './alert/alert.component';
 import { FormControlValidationDirective } from './form-control-validation.directive';
 import { FormLabelValidationDirective } from './form-label-validation.directive';
 import { FormLabelDirective } from './form-label.directive';
+import {NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, NgbAlertModule ],
   declarations: [AlertComponent, FormControlValidationDirective, FormLabelValidationDirective, FormLabelDirective],
-  exports: [AlertComponent, FormControlValidationDirective, FormLabelValidationDirective, FormLabelDirective]
+  exports: [NgbAlertModule, AlertComponent, FormControlValidationDirective, FormLabelValidationDirective, FormLabelDirective]
 })
 export class SharedModule {}

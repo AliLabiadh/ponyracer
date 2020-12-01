@@ -12,9 +12,10 @@ import { RacesComponent } from './races.component';
 import { RouterModule } from '@angular/router';
 import { RACES_ROUTES } from './races.routes';
 import {SharedModule} from '../shared/shared.module';
+import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(RACES_ROUTES), SharedModule],
+  imports: [CommonModule, RouterModule.forChild(RACES_ROUTES), SharedModule, NgbPaginationModule],
   declarations: [
     RacesComponent,
     RaceComponent,

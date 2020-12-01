@@ -8,6 +8,7 @@ import { RouterModule} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import {AppRoutesModule} from './app.routes';
 import { JwtInterceptor } from './jwt.interceptor';
+import {NgbCollapseModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { JwtInterceptor } from './jwt.interceptor';
     BrowserModule,
     HttpClientModule,
     RouterModule,
-    AppRoutesModule
+    AppRoutesModule,
+    NgbCollapseModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
